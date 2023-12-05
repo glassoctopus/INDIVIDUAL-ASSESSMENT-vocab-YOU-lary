@@ -1,13 +1,15 @@
 // USE WITH FIREBASE AUTH
-// import ViewDirectorBasedOnUserAuthStatus from '../utils/viewDirector';
+import ViewDirectorBasedOnUserAuthStatus from '../utils/viewDirector';
 import 'bootstrap'; // import bootstrap elements and js
 import '../styles/main.scss';
 import domBuilder from '../pages/domBuilder';
 import navBar from '../components/navBar';
+import loginButton from '../components/loginButton';
 
 const buildPage = () => {
   domBuilder();
   navBar();
+  loginButton();
 };
 
 const init = () => {
@@ -26,7 +28,7 @@ const init = () => {
     .addEventListener('click', () => buildPage());
 
   // USE WITH FIREBASE AUTH
-  // ViewDirectorBasedOnUserAuthStatus();
+  ViewDirectorBasedOnUserAuthStatus();
 };
 
 init();
