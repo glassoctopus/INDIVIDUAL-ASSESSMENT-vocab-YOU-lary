@@ -2,6 +2,13 @@
 // import ViewDirectorBasedOnUserAuthStatus from '../utils/viewDirector';
 import 'bootstrap'; // import bootstrap elements and js
 import '../styles/main.scss';
+import domBuilder from '../pages/domBuilder';
+import navBar from '../components/navBar';
+
+const buildPage = () => {
+  domBuilder();
+  navBar();
+};
 
 const init = () => {
   document.querySelector('#app').innerHTML = `
@@ -16,7 +23,7 @@ const init = () => {
 
   document
     .querySelector('#click-me')
-    .addEventListener('click', () => console.warn('You clicked that button!'));
+    .addEventListener('click', () => buildPage());
 
   // USE WITH FIREBASE AUTH
   // ViewDirectorBasedOnUserAuthStatus();
