@@ -11,29 +11,25 @@ const navBar = () => {
           <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item active">
-                <a class="nav-link" href="#" id="all-books">
+                <a class="nav-link" href="#" id="all-cards">
                   Your Words<span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" id="sale-books">New Words</a>
+                <a class="nav-link" href="#" id="new-card">New Words</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" id="authors">No more words</a>
+                <a class="nav-link" href="#" id="log-out">No more words</a>
               </li>
               <li>
               <input
                 class="form-control mr-sm-2"
                 id="search"
-                placeholder="Search Book Titles"
+                placeholder="TODO"
                 aria-label="Search"
               />
               </li>
             </ul>
-            <span class="navbar-text">
-              <div id="cart-button"></div>
-              <div id="logout-button"></div>
-            </span>
           </div>
           </div>
         </nav>`;

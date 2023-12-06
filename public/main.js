@@ -13,6 +13,10 @@ const init = () => {
   document
     .querySelector('#click-me')
     .addEventListener('click', () => ViewDirectorBasedOnUserAuthStatus());
+  // max debug
+  document.addEventListener('click', (e) => {
+    console.warn(e.target.id);
+  });
 };
 
 init();
