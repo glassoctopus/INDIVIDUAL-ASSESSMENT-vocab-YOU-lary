@@ -4,11 +4,11 @@ import domEvents from '../events/domEvents';
 import formEvents from '../events/formEvents';
 // import loginButton from '../components/loginButton';
 
-const startApp = () => {
+const startApp = (user) => {
   domBuilder();
   navBar();
-  domEvents();
-  formEvents();
+  domEvents(user);
+  formEvents(user);
   // loginButton();
 };
 

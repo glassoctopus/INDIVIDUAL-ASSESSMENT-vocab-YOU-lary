@@ -1,8 +1,8 @@
 const clearDom = () => {
-  document.querySelector('#app').innerHTML = '';
-  // document.querySelector('#add-button').innerHTML = '';
-  // document.querySelector('#form-container').innerHTML = '';
-  // document.querySelector('#view').innerHTML = '';
+  console.warn(document.querySelector('#main-container')); // .innerHTML = '';
+  console.warn(document.querySelector('#button-container')); // .innerHTML = '';
+  console.warn(document.querySelector('#form-container')); // .innerHTML = '';
+  console.warn(document.querySelector('#card-container')); // .innerHTML = '';
 };
 
 export default clearDom;
