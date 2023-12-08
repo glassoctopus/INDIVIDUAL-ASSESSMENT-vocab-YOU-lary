@@ -1,5 +1,5 @@
 import addCardForm from '../components/addCardForm';
-// import { showCards } from '../pages/showCards';
+import { showCards } from '../pages/showCards';
 import { getAllCards } from '../api/cardData';
 
 const domEvents = (user) => {
@@ -16,10 +16,11 @@ const domEvents = (user) => {
   });
 
   document.querySelector('#all-cards').addEventListener('click', () => {
-    const testArray = getAllCards(user);
-    console.log(testArray);
+    // const testArray = getAllCards(user);
+    // const newArray = Object.entries(testArray);
+    // console.warn(newArray);
     // showCards(testArray);
-    // getAllCards(user).then(showCards);
+    getAllCards(user).then(showCards);
   });
 };
 

@@ -15,7 +15,7 @@ const formEvents = (user) => {
         timeStampSubmission: timeOfCreation,
         user_id: user.uid,
       };
-      createCard(payload).then();
+      // createCard(payload).then();
 
       createCard(payload).then(({ name }) => {
         console.warn(name);
@@ -24,9 +24,10 @@ const formEvents = (user) => {
           getCards(user.uid).then(showCards);
         });
       });
+      console.warn('should have cleared the form');
     }
 
-    // TODO: CLICK EVENT FOR EDITING A BOOK
+    // TODO: CLICK EVENT FOR EDITING A CARD
     if (e.target.id.includes('edit-card-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
       // getSingleCard(firebaseKey).then((cardObj) => addCardForm(cardObj));
