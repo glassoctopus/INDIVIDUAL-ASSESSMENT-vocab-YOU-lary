@@ -1,9 +1,11 @@
-import { createCard, updateCard, getCards } from '../api/cardData';
+import {
+  createCard, updateCard, getCards
+} from '../api/cardData';
 import { showCards } from '../pages/showCards';
 import timeOfStamp from '../utils/timeOfStamp';
 
 const formEvents = (user) => {
-  document.querySelector('#app').addEventListener('submit', (e) => {
+  document.querySelector('#form-container').addEventListener('submit', (e) => {
     e.preventDefault();
     const timeOfCreation = timeOfStamp();
     // TODO: CLICK EVENT FOR SUBMITTING FORM FOR ADDING A CARD
@@ -15,10 +17,8 @@ const formEvents = (user) => {
         timeStampSubmission: timeOfCreation,
         user_id: user.uid,
       };
-      // createCard(payload).then();
 
       createCard(payload).then(({ name }) => {
-        console.warn(name);
         const patchPayload = { firebaseKey: name };
         updateCard(patchPayload).then(() => {
           getCards(user.uid).then(showCards);
@@ -28,10 +28,20 @@ const formEvents = (user) => {
     }
 
     // TODO: CLICK EVENT FOR EDITING A CARD
-    if (e.target.id.includes('edit-card-btn')) {
+    if (e.target.id.includes('update-card-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
-      // getSingleCard(firebaseKey).then((cardObj) => addCardForm(cardObj));
-      console.warn(firebaseKey);
+      const payload = {
+        title: document.querySelector('#title').value,
+        definition: document.querySelector('#definition').value,
+        tech: document.querySelector('#tech').value,
+        timeStampSubmission: timeOfCreation,
+        user_id: user.uid,
+        firebaseKey,
+      };
+
+      updateCard(payload).then(() => {
+        getCards().then(showCards);
+      });
     }
   });
 };

@@ -2,7 +2,7 @@ import clearDom from '../utils/clearDom';
 import renderToDOM from '../pages/renderToDom';
 
 // USING THIS FORM FOR BOTH CREATE AND UPDATE
-const addCardForm = (obj = {}) => {
+const updateCardForm = (obj = {}) => {
   clearDom();
   const domString = `
     <form style="width: 500px;margin: auto; width: 50%;" id="${obj.firebaseKey ? `update-card--${obj.firebaseKey}` : 'submit-card'}" class="mb-4">
@@ -18,7 +18,7 @@ const addCardForm = (obj = {}) => {
         <label for="definition">Description</label>
         <textarea class="form-control" placeholder="Card Definition" id="definition" style="height: 100px">${obj.definition || ''}</textarea>
       </div>
-      <button type="submit" class="btn btn-primary" id="submit-card">Submit Card
+      <button type="submit" class="btn btn-primary" id="update-card-btn">Submit Card
       </button>
     </form>`;
 
@@ -26,4 +26,4 @@ const addCardForm = (obj = {}) => {
   // selectUser(`${obj.user_id || ''}`);
 };
 
-export default addCardForm;
+export default updateCardForm;

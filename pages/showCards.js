@@ -9,20 +9,17 @@ const emptyCards = () => {
 const showCards = (array) => {
   clearDom();
 
-  const btnString = '<button class="btn btn-success btn-lg mb-4" id="add-card-btn">Add A Card</button>';
-  renderToDOM('#button-container', btnString);
-
   //   const expand = Object.keys(array).map((key) => [key, array[key]]);
   //   console.warn(expand);
 
   let domString = '';
   array.forEach((item) => {
     domString += `
-      <div class="card">
-        <div class="card-body" style="height: 180px;">
+      <div class="card" style="width: 210px; height: 420px;>
+        <div class="card-body">
           <h5 class="card-title">${item.title}</h5>
           <h5 class="card-title">${item.tech}</h5>
-            <p class="card-text bold">${item.definition}</p>
+            <p class="card-text bold" style="overflow:auto;">${item.definition}</p>
             <hr>
             <i class="btn btn-success fas fa-eye" id="view-card-btn--${item.firebaseKey}"></i>
             <i id="edit-card-btn--${item.firebaseKey}" class="fas fa-edit btn btn-info"></i>
