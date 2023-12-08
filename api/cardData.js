@@ -28,6 +28,18 @@ const updateCard = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSingleCard = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/cards/${firebaseKey}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 const getCards = (user) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/cards.json?orderBy="uid"&equalTo="${user.uid}"`, {
     method: 'GET',
@@ -64,6 +76,18 @@ const getAllCards = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const deleteCard = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/cards/${firebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
-  createCard, updateCard, getCards, getAllCards
+  createCard, updateCard, getCards, getAllCards, deleteCard, getSingleCard
 };
