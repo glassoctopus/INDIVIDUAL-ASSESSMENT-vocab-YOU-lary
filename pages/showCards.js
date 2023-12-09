@@ -8,26 +8,30 @@ const emptyCards = () => {
 
 const showCards = (array) => {
   clearDom();
-
-  //   const expand = Object.keys(array).map((key) => [key, array[key]]);
-  //   console.warn(expand);
-
   let domString = '';
-  array.forEach((item) => {
-    domString += `
+  if (array.length > 0) {
+    array.forEach((item) => {
+      let selectPrivate = '';
+      if (item.private === true) {
+        selectPrivate = '(private)';
+      }
+      domString += `
       <div class="card" style="width: 210px; height: 420px;>
         <div class="card-body">
           <h5 class="card-title">${item.title}</h5>
           <h5 class="card-title">${item.tech}</h5>
             <p class="card-text bold" style="overflow:auto;">${item.definition}</p>
             <hr>
-            <i class="btn btn-success fas fa-eye" id="view-card-btn--${item.firebaseKey}"></i>
-            <i id="edit-card-btn--${item.firebaseKey}" class="fas fa-edit btn btn-info"></i>
-            <i id="delete-card-btn--${item.firebaseKey}" class="btn btn-danger fas fa-trash-alt"></i>
+            <p>${selectPrivate}</p>
+            <a id="edit-card-btn--${item.firebaseKey}" class="">Edit Card</a>
+            <a id="delete-card-btn--${item.firebaseKey}" class="">Delete Card</a>
             <p class="card-text bold">${item.timeStampSubmission}</p>
         </div>
       </div>`;
-  });
+    });
+  } else {
+    domString = '<h2>No Cards to be displayed</h2>';
+  }
   renderToDOM('#card-container', domString);
 };
 

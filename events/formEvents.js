@@ -8,13 +8,13 @@ const formEvents = (user) => {
   document.querySelector('#form-container').addEventListener('submit', (e) => {
     e.preventDefault();
     const timeOfCreation = timeOfStamp();
-    // TODO: CLICK EVENT FOR SUBMITTING FORM FOR ADDING A CARD
     if (e.target.id.includes('submit-card')) {
       const payload = {
         title: document.querySelector('#title').value,
         definition: document.querySelector('#definition').value,
         tech: document.querySelector('#tech').value,
         timeStampSubmission: timeOfCreation,
+        private: document.querySelector('#private').checked,
         user_id: user.uid,
       };
 
@@ -24,11 +24,9 @@ const formEvents = (user) => {
           getCards(user.uid).then(showCards);
         });
       });
-      console.warn('should have cleared the form');
     }
 
-    // TODO: CLICK EVENT FOR EDITING A CARD
-    if (e.target.id.includes('update-card-btn')) {
+    if (e.target.id.includes('update-card-')) {
       const [, firebaseKey] = e.target.id.split('--');
       const payload = {
         title: document.querySelector('#title').value,
@@ -36,11 +34,12 @@ const formEvents = (user) => {
         tech: document.querySelector('#tech').value,
         timeStampSubmission: timeOfCreation,
         user_id: user.uid,
+        private: document.querySelector('#private').checked,
         firebaseKey,
       };
 
       updateCard(payload).then(() => {
-        getCards().then(showCards);
+        getCards(user.uid).then(showCards);
       });
     }
   });
