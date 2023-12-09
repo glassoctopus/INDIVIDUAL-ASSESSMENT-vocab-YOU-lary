@@ -58,6 +58,24 @@ const getCards = (user) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getPrivateCards = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/cards.json?orderBy="private"&equalTo="true"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
+
 const getAllCards = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/cards.json`, {
     method: 'GET',
@@ -89,5 +107,5 @@ const deleteCard = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 export {
-  createCard, updateCard, getCards, getAllCards, deleteCard, getSingleCard
+  createCard, updateCard, getCards, getAllCards, deleteCard, getSingleCard, getPrivateCards
 };

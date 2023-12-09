@@ -18,6 +18,9 @@ const addCardForm = (obj = {}) => {
         <label for="definition">Description</label>
         <textarea class="form-control" placeholder="Card Definition" id="definition" style="height: 100px">${obj.definition || ''}</textarea>
       </div>
+      <div>
+      <input type="checkbox" id="private" value="private?" /><p>Private</p>
+      </div>
       <button type="submit" class="btn btn-primary" id="submit-card">Submit Card
       </button>
     </form>`;

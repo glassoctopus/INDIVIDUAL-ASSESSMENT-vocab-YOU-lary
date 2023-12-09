@@ -1,7 +1,7 @@
 import clearDom from '../utils/clearDom';
 import renderToDOM from '../pages/renderToDom';
 
-// USING THIS FORM FOR BOTH CREATE AND UPDATE
+// USING THIS FORM FOR BOTH CREATE AND UPDATE, but not, couldn't get it to work
 const updateCardForm = (obj = {}) => {
   clearDom();
   const domString = `
@@ -17,6 +17,9 @@ const updateCardForm = (obj = {}) => {
       <div class="form-group">
         <label for="definition">Description</label>
         <textarea class="form-control" placeholder="Card Definition" id="definition" style="height: 100px">${obj.definition || ''}</textarea>
+      </div>
+      <div>
+      <input type="checkbox" id="private" value="private?" /><p>Private</p>
       </div>
       <button type="submit" class="btn btn-primary" id="update-card-btn">Submit Card
       </button>
